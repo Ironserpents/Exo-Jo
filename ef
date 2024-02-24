@@ -1,0 +1,50 @@
+#Exo1
+#Q1
+def boite_dominos():
+  dominos = []
+  for a in range(7):
+    for b in range(a, 7):
+      dominos.append((a, b))
+  return dominos
+# On teste la fonction
+#print(boite_dominos())
+
+#Q2
+from numpy.random import randint
+def tirage(dominos):
+  dominoNum1 = dominos[randint(len(dominos))]
+  dominoNum2 = dominos[randint(len(dominos))]
+  return dominoNum1, dominoNum2
+
+# On teste la fonction
+# dominos = boite_dominos()
+# print(tirage(dominos))
+
+#Q3
+from numpy.random import randint
+def tirage1(dominos):
+  dominoNum1 = dominos[randint(len(dominos))]
+  dominoNum2 = dominos[randint(len(dominos))]
+  juxtaposable= dominoNum1==dominoNum2
+  return dominoNum1, dominoNum2, juxtaposable
+
+# On teste la fonction
+# dominos = boite_dominos()
+# print(tirage1(dominos))
+
+#Q4
+from numpy.random import randint
+def simulation(N):
+  compteur = 0
+  dominos = boite_dominos()
+  for _ in range(N):
+    dominoNum1, dominoNum2, juxtaposable = tirage1(dominos)
+    if juxtaposable:
+      compteur += 1
+  proportion = compteur / N
+  return proportion
+
+# On teste la fonction
+
+# N = 1000
+# print(simulation(N))
